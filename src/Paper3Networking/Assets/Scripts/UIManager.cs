@@ -24,7 +24,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField]
     private Button executePhysicsButton;
 
-    private bool hasServerStarted;
+    private bool _hasServerStarted;
 
     private void Awake()
     {
@@ -54,8 +54,8 @@ public class UIManager : Singleton<UIManager>
             // relay features - if the Unity transport is found and is relay protocol then we redirect all the
             // traffic through the relay, else it just uses a LAN type (UNET) communication.
 
-            // if (RelayManager.Instance.IsRelayEnabled)
-            //     await RelayManager.Instance.SetupRelay();
+            if (RelayManager.Instance.IsRelayEnabled)
+                await RelayManager.Instance.SetupRelay();
 
             if (NetworkManager.Singleton.StartHost())
                 Logger.Instance.LogInfo("Host started...");
@@ -66,8 +66,8 @@ public class UIManager : Singleton<UIManager>
         // START CLIENT
         startClientButton?.onClick.AddListener(async () =>
         {
-            // if (RelayManager.Instance.IsRelayEnabled && !string.IsNullOrEmpty(joinCodeInput.text))
-            //     await RelayManager.Instance.JoinRelay(joinCodeInput.text);
+            if (RelayManager.Instance.IsRelayEnabled && !string.IsNullOrEmpty(joinCodeInput.text))
+                await RelayManager.Instance.JoinRelay(joinCodeInput.text);
 
             if(NetworkManager.Singleton.StartClient())
                 Logger.Instance.LogInfo("Client started...");
@@ -83,12 +83,12 @@ public class UIManager : Singleton<UIManager>
 
         NetworkManager.Singleton.OnServerStarted += () =>
         {
-            hasServerStarted = true;
+            _hasServerStarted = true;
         };
 
         executePhysicsButton.onClick.AddListener(() =>
         {
-            if (!hasServerStarted)
+            if (!_hasServerStarted)
             {
                 Logger.Instance.LogWarning("Server has not started...");
                 return;

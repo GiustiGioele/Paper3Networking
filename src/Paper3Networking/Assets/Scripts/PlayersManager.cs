@@ -3,13 +3,13 @@ using Unity.Netcode;
 
 public class PlayersManager : NetworkSingleton<PlayersManager>
 {
-    NetworkVariable<int> playersInGame = new NetworkVariable<int>();
+    NetworkVariable<int> _playersInGame = new NetworkVariable<int>();
 
     public int PlayersInGame
     {
         get
         {
-            return playersInGame.Value;
+            return _playersInGame.Value;
         }
     }
 
@@ -18,13 +18,13 @@ public class PlayersManager : NetworkSingleton<PlayersManager>
         NetworkManager.Singleton.OnClientConnectedCallback += (id) =>
         {
             if(IsServer)
-                playersInGame.Value++;
+                _playersInGame.Value++;
         };
 
         NetworkManager.Singleton.OnClientDisconnectCallback += (id) =>
         {
             if(IsServer)
-                playersInGame.Value--;
+                _playersInGame.Value--;
         };
     }
 }
