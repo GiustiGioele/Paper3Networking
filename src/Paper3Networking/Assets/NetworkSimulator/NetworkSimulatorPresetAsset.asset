@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7eec304968d4bc484aad4e7dcd3c641, type: 3}
   m_Name: NetworkSimulatorPresetAsset
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
-  <PacketDelayMs>k__BackingField: 0
-  <PacketJitterMs>k__BackingField: 0
-  <PacketLossInterval>k__BackingField: 0
-  <PacketLossPercent>k__BackingField: 0
+  <Name>k__BackingField: LagSpikes
+  <Description>k__BackingField: MaxLatency
+  <PacketDelayMs>k__BackingField: 263
+  <PacketJitterMs>k__BackingField: 263
+  <PacketLossInterval>k__BackingField: 1
+  <PacketLossPercent>k__BackingField: 5
