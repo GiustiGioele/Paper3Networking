@@ -7,7 +7,7 @@ public class PlayerHud : NetworkBehaviour
     [SerializeField]
     private NetworkVariable<NetworkString> playerNetworkName = new NetworkVariable<NetworkString>();
 
-    private bool overlaySet = false;
+    private bool _overlaySet = false;
 
     public override void OnNetworkSpawn()
     {
@@ -25,10 +25,10 @@ public class PlayerHud : NetworkBehaviour
 
     public void Update()
     {
-        if(!overlaySet && !string.IsNullOrEmpty(playerNetworkName.Value))
+        if(!_overlaySet && !string.IsNullOrEmpty(playerNetworkName.Value))
         {
             SetOverlay();
-            overlaySet = true;
+            _overlaySet = true;
         }
     }
 }

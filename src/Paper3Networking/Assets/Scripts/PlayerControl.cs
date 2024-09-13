@@ -25,19 +25,19 @@ public class PlayerControl : NetworkBehaviour
     [SerializeField]
     private NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState>();
 
-    private CharacterController characterController;
+    private CharacterController _characterController;
 
     // client caches positions
-    private Vector3 oldInputPosition = Vector3.zero;
-    private Vector3 oldInputRotation = Vector3.zero;
-    private PlayerState oldPlayerState = PlayerState.Idle;
+    private Vector3 _oldInputPosition = Vector3.zero;
+    private Vector3 _oldInputRotation = Vector3.zero;
+    private PlayerState _oldPlayerState = PlayerState.Idle;
 
-    private Animator animator;
+    private Animator _animator;
 
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -64,7 +64,7 @@ public class PlayerControl : NetworkBehaviour
     {
         if (networkPositionDirection.Value != Vector3.zero)
         {
-            characterController.SimpleMove(networkPositionDirection.Value);
+            _characterController.SimpleMove(networkPositionDirection.Value);
         }
         if (networkRotationDirection.Value != Vector3.zero)
         {
@@ -74,10 +74,10 @@ public class PlayerControl : NetworkBehaviour
 
     private void ClientVisuals()
     {
-        if (oldPlayerState != networkPlayerState.Value)
+        if (_oldPlayerState != networkPlayerState.Value)
         {
-            oldPlayerState = networkPlayerState.Value;
-            animator.SetTrigger($"{networkPlayerState.Value}");
+            _oldPlayerState = networkPlayerState.Value;
+            _animator.SetTrigger($"{networkPlayerState.Value}");
         }
     }
 
@@ -105,10 +105,10 @@ public class PlayerControl : NetworkBehaviour
             UpdatePlayerStateServerRpc(PlayerState.ReverseWalk);
 
         // let server know about position and rotation client changes
-        if (oldInputPosition != inputPosition ||
-            oldInputRotation != inputRotation)
+        if (_oldInputPosition != inputPosition ||
+            _oldInputRotation != inputRotation)
         {
-            oldInputPosition = inputPosition;
+            _oldInputPosition = inputPosition;
             UpdateClientPositionAndRotationServerRpc(inputPosition * walkSpeed, inputRotation * rotationSpeed);
         }
     }

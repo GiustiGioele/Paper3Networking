@@ -18,8 +18,8 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
     public bool invertYOutputValue;
 
     //Stored Pointer Values
-    private Vector2 pointerDownPosition;
-    private Vector2 currentPointerPosition;
+    private Vector2 _pointerDownPosition;
+    private Vector2 _currentPointerPosition;
 
     [Header("Output")]
     public UnityEvent<Vector2> touchZoneOutputEvent;
@@ -33,31 +33,31 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
     {
         if(handleRect)
         {
-            SetObjectActiveState(handleRect.gameObject, false); 
+            SetObjectActiveState(handleRect.gameObject, false);
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(containerRect, eventData.position, eventData.pressEventCamera, out pointerDownPosition);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(containerRect, eventData.position, eventData.pressEventCamera, out _pointerDownPosition);
 
         if(handleRect)
         {
             SetObjectActiveState(handleRect.gameObject, true);
-            UpdateHandleRectPosition(pointerDownPosition);
+            UpdateHandleRectPosition(_pointerDownPosition);
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(containerRect, eventData.position, eventData.pressEventCamera, out currentPointerPosition);
-        
-        Vector2 positionDelta = GetDeltaBetweenPositions(pointerDownPosition, currentPointerPosition);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(containerRect, eventData.position, eventData.pressEventCamera, out _currentPointerPosition);
+
+        Vector2 positionDelta = GetDeltaBetweenPositions(_pointerDownPosition, _currentPointerPosition);
 
         Vector2 clampedPosition = ClampValuesToMagnitude(positionDelta);
-        
+
         Vector2 outputPosition = ApplyInversionFilter(clampedPosition);
 
         OutputPointerEventValue(outputPosition * magnitudeMultiplier);
@@ -65,8 +65,8 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        pointerDownPosition = Vector2.zero;
-        currentPointerPosition = Vector2.zero;
+        _pointerDownPosition = Vector2.zero;
+        _currentPointerPosition = Vector2.zero;
 
         OutputPointerEventValue(Vector2.zero);
 
@@ -121,5 +121,5 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
     {
         return -value;
     }
-    
+
 }

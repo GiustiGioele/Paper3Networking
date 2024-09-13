@@ -21,17 +21,17 @@ public class PlayerControlAuthorative : NetworkBehaviour
     [SerializeField]
     private NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState>();
 
-    private CharacterController characterController;
+    private CharacterController _characterController;
 
-    private Animator animator;
+    private Animator _animator;
 
     // client caches animation states
-    private PlayerState oldPlayerState = PlayerState.Idle;
+    private PlayerState _oldPlayerState = PlayerState.Idle;
 
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -57,10 +57,10 @@ public class PlayerControlAuthorative : NetworkBehaviour
 
     private void ClientVisuals()
     {
-        if (oldPlayerState != networkPlayerState.Value)
+        if (_oldPlayerState != networkPlayerState.Value)
         {
-            oldPlayerState = networkPlayerState.Value;
-            animator.SetTrigger($"{networkPlayerState.Value}");
+            _oldPlayerState = networkPlayerState.Value;
+            _animator.SetTrigger($"{networkPlayerState.Value}");
         }
     }
 
@@ -88,7 +88,7 @@ public class PlayerControlAuthorative : NetworkBehaviour
             UpdatePlayerStateServerRpc(PlayerState.ReverseWalk);
 
         // client is responsible for moving itself
-        characterController.SimpleMove(inputPosition * walkSpeed);
+        _characterController.SimpleMove(inputPosition * walkSpeed);
         transform.Rotate(inputRotation * rotationSpeed, Space.World);
     }
     private static bool ActiveRunningActionKey()

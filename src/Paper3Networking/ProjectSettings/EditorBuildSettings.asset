@@ -5,13 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/BasicMultiplayer.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/testbuild.unity
-    guid: 357cc32069fa67141a4fa367dc818170
+    path: Assets/Scenes/NetworkSimulatorScenes/Relay_LagSpikes.unity
+    guid: 87e6ba264adaa204e81279b99b3be756
   m_configObjects: {}

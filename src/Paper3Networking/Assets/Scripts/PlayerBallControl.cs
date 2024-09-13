@@ -15,13 +15,13 @@ public class PlayerBallControl : NetworkBehaviour
     [SerializeField]
     private Vector2 defaultInitialPositionOnPlane = new Vector2(-4, 4);
 
-    private Rigidbody ballRigidBody;
+    private Rigidbody _ballRigidBody;
 
     void Awake()
     {
-        ballRigidBody = GetComponent<Rigidbody>();
+        _ballRigidBody = GetComponent<Rigidbody>();
     }
-   
+
     void Start()
     {
         if (IsClient && IsOwner)
@@ -45,10 +45,10 @@ public class PlayerBallControl : NetworkBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         if (vertical > 0 || vertical < 0)
-            ballRigidBody.AddForce(vertical > 0 ? Vector3.forward * speed : Vector3.back * speed);
+            _ballRigidBody.AddForce(vertical > 0 ? Vector3.forward * speed : Vector3.back * speed);
         if (horizontal > 0 || horizontal < 0)
-            ballRigidBody.AddForce(horizontal > 0 ? Vector3.right * speed : Vector3.left * speed);
+            _ballRigidBody.AddForce(horizontal > 0 ? Vector3.right * speed : Vector3.left * speed);
         if (Input.GetKey(KeyCode.Space))
-            ballRigidBody.AddForce(Vector3.up * flySpeed);
+            _ballRigidBody.AddForce(Vector3.up * flySpeed);
     }
 }

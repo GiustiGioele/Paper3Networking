@@ -39,20 +39,20 @@ public class RelayManager : Singleton<RelayManager>
 
         RelayHostData relayHostData = new RelayHostData
         {
-            Key = allocation.Key,
-            Port = (ushort) allocation.RelayServer.Port,
-            AllocationID = allocation.AllocationId,
-            AllocationIDBytes = allocation.AllocationIdBytes,
-            IPv4Address = allocation.RelayServer.IpV4,
-            ConnectionData = allocation.ConnectionData
+            _key = allocation.Key,
+            _port = (ushort) allocation.RelayServer.Port,
+            _allocationID = allocation.AllocationId,
+            _allocationIDBytes = allocation.AllocationIdBytes,
+            _pv4Address = allocation.RelayServer.IpV4,
+            _connectionData = allocation.ConnectionData
         };
 
-        relayHostData.JoinCode = await Relay.Instance.GetJoinCodeAsync(relayHostData.AllocationID);
+        relayHostData._joinCode = await Relay.Instance.GetJoinCodeAsync(relayHostData._allocationID);
 
-        Transport.SetRelayServerData(relayHostData.IPv4Address, relayHostData.Port, relayHostData.AllocationIDBytes,
-                relayHostData.Key, relayHostData.ConnectionData);
+        Transport.SetRelayServerData(relayHostData._pv4Address, relayHostData._port, relayHostData._allocationIDBytes,
+                relayHostData._key, relayHostData._connectionData);
 
-        Logger.Instance.LogInfo($"Relay Server Generated Join Code: {relayHostData.JoinCode}");
+        Logger.Instance.LogInfo($"Relay Server Generated Join Code: {relayHostData._joinCode}");
 
         return relayHostData;
     }
@@ -75,18 +75,18 @@ public class RelayManager : Singleton<RelayManager>
 
         RelayJoinData relayJoinData = new RelayJoinData
         {
-            Key = allocation.Key,
-            Port = (ushort)allocation.RelayServer.Port,
-            AllocationID = allocation.AllocationId,
-            AllocationIDBytes = allocation.AllocationIdBytes,
-            ConnectionData = allocation.ConnectionData,
-            HostConnectionData = allocation.HostConnectionData,
-            IPv4Address = allocation.RelayServer.IpV4,
-            JoinCode = joinCode
+            _key = allocation.Key,
+            _port = (ushort)allocation.RelayServer.Port,
+            _allocationID = allocation.AllocationId,
+            _allocationIDBytes = allocation.AllocationIdBytes,
+            _connectionData = allocation.ConnectionData,
+            _hostConnectionData = allocation.HostConnectionData,
+            _pv4Address = allocation.RelayServer.IpV4,
+            _joinCode = joinCode
         };
 
-        Transport.SetRelayServerData(relayJoinData.IPv4Address, relayJoinData.Port, relayJoinData.AllocationIDBytes,
-            relayJoinData.Key, relayJoinData.ConnectionData, relayJoinData.HostConnectionData);
+        Transport.SetRelayServerData(relayJoinData._pv4Address, relayJoinData._port, relayJoinData._allocationIDBytes,
+            relayJoinData._key, relayJoinData._connectionData, relayJoinData._hostConnectionData);
 
         Logger.Instance.LogInfo($"Client Joined Game With Join Code: {joinCode}");
 

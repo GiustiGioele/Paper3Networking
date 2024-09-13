@@ -11,29 +11,29 @@ namespace StarterAssets
 {
     public static class PackageChecker
     {
-        private static ListRequest clientList;
-        private static SearchRequest compatibleList;
-        private static List<PackageEntry> packagesToAdd;
+        private static ListRequest _clientList;
+        private static SearchRequest _compatibleList;
+        private static List<PackageEntry> _packagesToAdd;
 
-        private static AddRequest[] addRequests;
-        private static bool[] installRequired;
+        private static AddRequest[] _addRequests;
+        private static bool[] _installRequired;
 
-        private static readonly string EditorFolderRoot = "Assets/StarterAssets/";
-        private static readonly string PackagesToImportDataFile = "PackageImportList.txt";
-        public static readonly string PackageCheckerScriptingDefine = "STARTER_ASSETS_PACKAGES_CHECKED";
+        private static readonly string _editorFolderRoot = "Assets/StarterAssets/";
+        private static readonly string _packagesToImportDataFile = "PackageImportList.txt";
+        public static readonly string _packageCheckerScriptingDefine = "STARTER_ASSETS_PACKAGES_CHECKED";
 
         [InitializeOnLoadMethod]
         private static void CheckPackage()
         {
             // if we dont have the scripting define, it means the check has not been done
-            if (!ScriptingDefineUtils.CheckScriptingDefine(PackageCheckerScriptingDefine))
+            if (!ScriptingDefineUtils.CheckScriptingDefine(_packageCheckerScriptingDefine))
             {
-                packagesToAdd = new List<PackageEntry>();
-                clientList = null;
-                compatibleList = null;
+                _packagesToAdd = new List<PackageEntry>();
+                _clientList = null;
+                _compatibleList = null;
 
                 // find the projects required package list
-                var requiredPackagesListFile = Directory.GetFiles(Application.dataPath, PackagesToImportDataFile,
+                var requiredPackagesListFile = Directory.GetFiles(Application.dataPath, _packagesToImportDataFile,
                     SearchOption.AllDirectories);
 
                 // if no PackageImportList.txt exists
@@ -44,7 +44,7 @@ namespace StarterAssets
                 }
                 else
                 {
-                    packagesToAdd = new List<PackageEntry>();
+                    _packagesToAdd = new List<PackageEntry>();
 
                     string packageListPath = requiredPackagesListFile[0];
                     string[] content = File.ReadAllLines(packageListPath);
@@ -55,45 +55,45 @@ namespace StarterAssets
 
                         // if no version is given, return null
                         PackageEntry entry = new PackageEntry
-                            {name = split[0], version = split.Length > 1 ? split[1] : null};
+                            {_name = split[0], _version = split.Length > 1 ? split[1] : null};
 
-                        packagesToAdd.Add(entry);
+                        _packagesToAdd.Add(entry);
                     }
 
                     // Create a file in library that is queried to see if CheckPackage() has been run already
-                    ScriptingDefineUtils.SetScriptingDefine(PackageCheckerScriptingDefine);
+                    ScriptingDefineUtils.SetScriptingDefine(_packageCheckerScriptingDefine);
 
                     // create a list of compatible packages for current engine version
-                    compatibleList = Client.SearchAll();
+                    _compatibleList = Client.SearchAll();
 
-                    while (!compatibleList.IsCompleted)
+                    while (!_compatibleList.IsCompleted)
                     {
-                        if (compatibleList.Status == StatusCode.Failure || compatibleList.Error != null)
+                        if (_compatibleList.Status == StatusCode.Failure || _compatibleList.Error != null)
                         {
-                            Debug.LogError(compatibleList.Error.message);
+                            Debug.LogError(_compatibleList.Error.message);
                             break;
                         }
                     }
 
                     // create a list of packages found in the engine
-                    clientList = Client.List();
+                    _clientList = Client.List();
 
-                    while (!clientList.IsCompleted)
+                    while (!_clientList.IsCompleted)
                     {
-                        if (clientList.Status == StatusCode.Failure || clientList.Error != null)
+                        if (_clientList.Status == StatusCode.Failure || _clientList.Error != null)
                         {
-                            Debug.LogError(clientList.Error.message);
+                            Debug.LogError(_clientList.Error.message);
                             break;
                         }
                     }
 
-                    addRequests = new AddRequest[packagesToAdd.Count];
-                    installRequired = new bool[packagesToAdd.Count];
+                    _addRequests = new AddRequest[_packagesToAdd.Count];
+                    _installRequired = new bool[_packagesToAdd.Count];
 
                     // default new packages to install = false. we will mark true after validating they're required
-                    for (int i = 0; i < installRequired.Length; i++)
+                    for (int i = 0; i < _installRequired.Length; i++)
                     {
-                        installRequired[i] = false;
+                        _installRequired[i] = false;
                     }
 
                     // build data collections compatible packages for this project, and packages within the project
@@ -102,33 +102,33 @@ namespace StarterAssets
                     List<PackageInfo> clientPackages =
                         new List<PackageInfo>();
 
-                    foreach (var result in compatibleList.Result)
+                    foreach (var result in _compatibleList.Result)
                     {
                         compatiblePackages.Add(result);
                     }
 
-                    foreach (var result in clientList.Result)
+                    foreach (var result in _clientList.Result)
                     {
                         clientPackages.Add(result);
                     }
 
                     // check for the latest verified package version for each package that is missing a version
-                    for (int i = 0; i < packagesToAdd.Count; i++)
+                    for (int i = 0; i < _packagesToAdd.Count; i++)
                     {
                         // if a version number is not provided
-                        if (packagesToAdd[i].version == null)
+                        if (_packagesToAdd[i]._version == null)
                         {
                             foreach (var package in compatiblePackages)
                             {
                                 // if no latest verified version found, PackageChecker will just install latest release
-                                if (packagesToAdd[i].name == package.name && package.versions.recommended != string.Empty)
+                                if (_packagesToAdd[i]._name == package.name && package.versions.recommended != string.Empty)
                                 {
                                     // add latest verified version number to the packagetoadd list version
                                     // so that we get the latest verified version only
-                                    packagesToAdd[i].version = package.versions.recommended;
+                                    _packagesToAdd[i]._version = package.versions.recommended;
 
                                     // add to our install list
-                                    installRequired[i] = true;
+                                    _installRequired[i] = true;
 
                                     //Debug.Log(string.Format("Requested {0}. Latest verified compatible package found: {1}",
                                     //    packagesToAdd[i].name, packagesToAdd[i].version));
@@ -140,16 +140,16 @@ namespace StarterAssets
                         // from the campatiblelist result
                         foreach (var package in clientPackages)
                         {
-                            if (packagesToAdd[i].name == package.name)
+                            if (_packagesToAdd[i]._name == package.name)
                             {
                                 // see what version we have installed
-                                switch (CompareVersion(packagesToAdd[i].version, package.version))
+                                switch (CompareVersion(_packagesToAdd[i]._version, package.version))
                                 {
                                     // latest verified is ahead of installed version
                                     case 1:
-                                        installRequired[i] = EditorUtility.DisplayDialog("Confirm Package Upgrade",
-                                            $"The version of \"{packagesToAdd[i].name}\" in this project is {package.version}. The latest verified " +
-                                            $"version is {packagesToAdd[i].version}. Would you like to upgrade it to the latest version? (Recommended)",
+                                        _installRequired[i] = EditorUtility.DisplayDialog("Confirm Package Upgrade",
+                                            $"The version of \"{_packagesToAdd[i]._name}\" in this project is {package.version}. The latest verified " +
+                                            $"version is {_packagesToAdd[i]._version}. Would you like to upgrade it to the latest version? (Recommended)",
                                             "Yes", "No");
 
                                         Debug.Log(
@@ -159,7 +159,7 @@ namespace StarterAssets
 
                                     // latest verified matches installed version
                                     case 0:
-                                        installRequired[i] = false;
+                                        _installRequired[i] = false;
 
                                         Debug.Log(
                                             $"<b>Package version match</b>: {package.packageId} matches latest verified version " +
@@ -168,8 +168,8 @@ namespace StarterAssets
 
                                     // latest verified is behind installed version
                                     case -1:
-                                        installRequired[i] = EditorUtility.DisplayDialog("Confirm Package Downgrade",
-                                            $"The version of \"{packagesToAdd[i].name}\" in this project is {package.version}. The latest verified version is {packagesToAdd[i].version}. " +
+                                        _installRequired[i] = EditorUtility.DisplayDialog("Confirm Package Downgrade",
+                                            $"The version of \"{_packagesToAdd[i]._name}\" in this project is {package.version}. The latest verified version is {_packagesToAdd[i]._version}. " +
                                             $"{package.version} is unverified. Would you like to downgrade it to the latest verified version? " +
                                             "(Recommended)", "Yes", "No");
 
@@ -183,11 +183,11 @@ namespace StarterAssets
                     }
 
                     // install our packages and versions
-                    for (int i = 0; i < packagesToAdd.Count; i++)
+                    for (int i = 0; i < _packagesToAdd.Count; i++)
                     {
-                        if (installRequired[i])
+                        if (_installRequired[i])
                         {
-                            addRequests[i] = InstallSelectedPackage(packagesToAdd[i].name, packagesToAdd[i].version);
+                            _addRequests[i] = InstallSelectedPackage(_packagesToAdd[i]._name, _packagesToAdd[i]._version);
                         }
                     }
 
@@ -221,7 +221,7 @@ namespace StarterAssets
         private static void ReimportPackagesByKeyword()
         {
             AssetDatabase.Refresh();
-            AssetDatabase.ImportAsset(EditorFolderRoot, ImportAssetOptions.ImportRecursive);
+            AssetDatabase.ImportAsset(_editorFolderRoot, ImportAssetOptions.ImportRecursive);
         }
 
         public static int CompareVersion(string latestVerifiedVersion, string projectVersion)
@@ -262,8 +262,8 @@ namespace StarterAssets
 
         public class PackageEntry
         {
-            public string name;
-            public string version;
+            public string _name;
+            public string _version;
         }
     }
 }
