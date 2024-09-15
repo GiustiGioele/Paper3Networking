@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PresetAsset: {fileID: 0}
   m_PresetReference:
-    rid: 6616920705806893071
+    rid: 6616920706254372864
   m_Scenario:
     rid: 6616920705806893069
   m_IsScenarioSettingsFolded: 1
@@ -2037,7 +2037,7 @@ MonoBehaviour:
     - rid: 6616920705806893069
       type: {class: ConnectionParametersWithCurves, ns: , asm: Assembly-CSharp}
       data:
-        loopDurationMs: 0
+        loopDurationMs: 1000
         packetDelayMs:
           serializedVersion: 2
           m_Curve:
@@ -2224,7 +2224,7 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 6616920705806893071
+    - rid: 6616920706254372864
       type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime,
         asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
       data:
