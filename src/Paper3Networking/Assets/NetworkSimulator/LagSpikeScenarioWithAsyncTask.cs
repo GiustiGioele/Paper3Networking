@@ -9,11 +9,9 @@ namespace Unity.Multiplayer.Tools.Samples.NetworkScenario
 {
     public class LagSpikeScenarioWithAsyncTask : NetworkScenarioTask
     {
-        [FormerlySerializedAs("m_DurationBetweenLagSpikesMilliseconds")]
         [SerializeField]
         int _mLagSpikeIntervalMs;
 
-        [FormerlySerializedAs("m_LagSpikeDurationMilliseconds")]
         [SerializeField]
         int _mLagSpikeDurationMs;
 

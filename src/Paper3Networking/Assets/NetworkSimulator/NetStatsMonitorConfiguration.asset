@@ -23,12 +23,6 @@ MonoBehaviour:
       <EnumValue>k__BackingField: 50
     - <TypeIndex>k__BackingField: 0
       <EnumValue>k__BackingField: 49
-    - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 55
-    - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 6
-    - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 5
     <CounterConfiguration>k__BackingField:
       <SmoothingMethod>k__BackingField: 0
       <AggregationMethod>k__BackingField: 0
@@ -41,13 +35,14 @@ MonoBehaviour:
         m_SampleCount: 64
         <SampleRate>k__BackingField: 0
     <GraphConfiguration>k__BackingField:
-      m_SampleCount: 256
+      m_SampleCount: 8
       <SampleRate>k__BackingField: 0
       <VariableColors>k__BackingField:
       - {r: 0.9245283, g: 0.075008824, b: 0.075008824, a: 1}
+      - {r: 0.7058089, g: 0.735849, b: 0.14855818, a: 1}
       <XAxisType>k__BackingField: 0
       <LineGraphConfiguration>k__BackingField:
-        m_LineThickness: 1
+        m_LineThickness: 2
     <SerializedStats>k__BackingField:
     - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
         Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -58,12 +53,3 @@ MonoBehaviour:
     - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
         Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       <ValueName>k__BackingField: PacketsReceived
-    - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
-        Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      <ValueName>k__BackingField: RttToServer
-    - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
-        Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      <ValueName>k__BackingField: TotalBytesSent
-    - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
-        Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      <ValueName>k__BackingField: TotalBytesReceived
