@@ -2025,7 +2025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PresetAsset: {fileID: 0}
   m_PresetReference:
-    rid: 6616920658374819894
+    rid: 6616920658374819910
   m_Scenario:
     rid: 6616920658374819885
   m_IsScenarioSettingsFolded: 1
@@ -2039,10 +2039,20 @@ MonoBehaviour:
       data:
         m_Configurations:
         - m_ClassPreset:
-            rid: 6616920658374819894
+            rid: 6616920658374819907
           m_ScriptableObjectPreset: {fileID: 0}
           ChangeIntervalMilliseconds: 1000
-    - rid: 6616920658374819894
+    - rid: 6616920658374819907
+      type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime,
+        asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
+      data:
+        <Name>k__BackingField: 
+        <Description>k__BackingField: 
+        <PacketDelayMs>k__BackingField: 0
+        <PacketJitterMs>k__BackingField: 0
+        <PacketLossInterval>k__BackingField: 0
+        <PacketLossPercent>k__BackingField: 0
+    - rid: 6616920658374819910
       type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime,
         asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
       data:
