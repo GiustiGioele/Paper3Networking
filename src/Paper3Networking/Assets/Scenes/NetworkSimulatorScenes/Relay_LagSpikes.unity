@@ -877,7 +877,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Execute Physics
+  m_text: 'Coins Button
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1192,6 +1194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518499867}
   - component: {fileID: 518499866}
+  - component: {fileID: 518499868}
   m_Layer: 0
   m_Name: NetworkObjectPool
   m_TagString: Untagged
@@ -1211,8 +1214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8902eab8073d6444497d7efd654bd811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNetworkManager: {fileID: 0}
-  pooledPrefabsList: []
+  mNetworkManager: {fileID: 626551820}
+  pooledPrefabsList:
+  - prefab: {fileID: 3966671838215205501, guid: 126800c195f579a4b99a8cadcb0df557,
+      type: 3}
+    prewarmCount: 1
 --- !u!4 &518499867
 Transform:
   m_ObjectHideFlags: 0
@@ -1228,6 +1234,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &518499868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518499865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 918969193
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &626551817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,7 +2053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PresetAsset: {fileID: 0}
   m_PresetReference:
-    rid: 6616920706254372954
+    rid: 6616920724774060037
   m_Scenario:
     rid: 6616920706254372879
   m_IsScenarioSettingsFolded: 1
@@ -2059,7 +2086,7 @@ MonoBehaviour:
         mPacketLossIntervalConfiguration:
           mActive: 0
           mMinimumInterval: {x: 1, y: 5}
-    - rid: 6616920706254372954
+    - rid: 6616920724774060037
       type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime,
         asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
       data:
@@ -2120,12 +2147,12 @@ GameObject:
   - component: {fileID: 951523242}
   - component: {fileID: 951523241}
   m_Layer: 5
-  m_Name: ExecutePhysicsButton
+  m_Name: CoinsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &951523240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2316,8 +2343,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17982654, y: -0.16092074, z: 0.02983483, w: -0.9699881}
-  m_LocalPosition: {x: -4.510652, y: 8.076909, z: -9.683594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 1.375, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2421,6 +2448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096450220}
   - component: {fileID: 1096450221}
+  - component: {fileID: 1096450222}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -2461,6 +2489,27 @@ MonoBehaviour:
   playersInGameText: {fileID: 189727566}
   joinCodeInput: {fileID: 334368953}
   executePhysicsButton: {fileID: 951523241}
+--- !u!114 &1096450222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096450219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 298783618
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1442138340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,7 +3094,7 @@ Transform:
   m_GameObject: {fileID: 2016632159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3063,9 +3112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83f2a20242ef5b48a3601b202b7b4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 681957988237654865, guid: 75d0befe4694a2e4bb9c295cee04f949,
+  objectPrefab: {fileID: 3966671838215205501, guid: 126800c195f579a4b99a8cadcb0df557,
     type: 3}
-  maxObjectInstanceCount: 10
+  maxObjectInstanceCount: 6
 --- !u!114 &2016632162
 MonoBehaviour:
   m_ObjectHideFlags: 0
