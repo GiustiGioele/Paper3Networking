@@ -14,15 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DisplayElements>k__BackingField:
   - <FieldsInitialized>k__BackingField: 1
-    <Type>k__BackingField: 1
-    <Label>k__BackingField: 
+    <Type>k__BackingField: 2
+    <Label>k__BackingField: Example
     <Stats>k__BackingField:
     - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 65
-    - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 50
-    - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 49
+      <EnumValue>k__BackingField: 55
     <CounterConfiguration>k__BackingField:
       <SmoothingMethod>k__BackingField: 0
       <AggregationMethod>k__BackingField: 0
@@ -39,7 +35,39 @@ MonoBehaviour:
       <SampleRate>k__BackingField: 0
       <VariableColors>k__BackingField:
       - {r: 0.9245283, g: 0.075008824, b: 0.075008824, a: 1}
-      - {r: 0.7058089, g: 0.735849, b: 0.14855818, a: 1}
+      <XAxisType>k__BackingField: 0
+      <LineGraphConfiguration>k__BackingField:
+        m_LineThickness: 2
+    <SerializedStats>k__BackingField:
+    - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
+        Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      <ValueName>k__BackingField: RttToServer
+  - <FieldsInitialized>k__BackingField: 1
+    <Type>k__BackingField: 2
+    <Label>k__BackingField: Example
+    <Stats>k__BackingField:
+    - <TypeIndex>k__BackingField: 0
+      <EnumValue>k__BackingField: 65
+    - <TypeIndex>k__BackingField: 0
+      <EnumValue>k__BackingField: 49
+    - <TypeIndex>k__BackingField: 0
+      <EnumValue>k__BackingField: 50
+    <CounterConfiguration>k__BackingField:
+      <SmoothingMethod>k__BackingField: 0
+      <AggregationMethod>k__BackingField: 0
+      m_SignificantDigits: 3
+      <HighlightLowerBound>k__BackingField: -Infinity
+      <HighlightUpperBound>k__BackingField: Infinity
+      <ExponentialMovingAverageParams>k__BackingField:
+        m_HalfLife: 1
+      <SimpleMovingAverageParams>k__BackingField:
+        m_SampleCount: 64
+        <SampleRate>k__BackingField: 0
+    <GraphConfiguration>k__BackingField:
+      m_SampleCount: 50
+      <SampleRate>k__BackingField: 0
+      <VariableColors>k__BackingField:
+      - {r: 0.27012616, g: 0.9254902, b: 0.0745098, a: 1}
       <XAxisType>k__BackingField: 0
       <LineGraphConfiguration>k__BackingField:
         m_LineThickness: 2
@@ -49,7 +77,7 @@ MonoBehaviour:
       <ValueName>k__BackingField: PacketLoss
     - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
         Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      <ValueName>k__BackingField: PacketsSent
+      <ValueName>k__BackingField: PacketsReceived
     - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
         Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      <ValueName>k__BackingField: PacketsReceived
+      <ValueName>k__BackingField: PacketsSent

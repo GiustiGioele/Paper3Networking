@@ -2026,205 +2026,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PresetAsset: {fileID: 0}
   m_PresetReference:
-    rid: 6616920706254372864
+    rid: 6616920706254372954
   m_Scenario:
-    rid: 6616920705806893069
+    rid: 6616920706254372879
   m_IsScenarioSettingsFolded: 1
   AutoRunScenario: 1
   references:
     version: 2
     RefIds:
-    - rid: 6616920705806893069
-      type: {class: ConnectionParametersWithCurves, ns: , asm: Assembly-CSharp}
+    - rid: 6616920706254372879
+      type: {class: UnstableConnection, ns: Unity.Multiplayer.Tools.Samples.NetworkScenario,
+        asm: Assembly-CSharp}
       data:
-        loopDurationMs: 1000
-        packetDelayMs:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.5
-            value: 100
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        packetJitterMs:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.5
-            value: 50
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        packetLossInterval:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.039916992
-            value: 0.02545166
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.07626891
-            value: 0.0011563223
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.11154746
-            value: 0.025071714
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.14755341
-            value: 0.0019579537
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.18465044
-            value: 0.024403686
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.2190643
-            value: 0.00020927424
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 0
-          m_RotationOrder: 4
-        packetLossPercent:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.5
-            value: 3
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1.4504955
-            value: 4.0738845
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1.8186554
-            value: -0.110897064
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-    - rid: 6616920706254372864
+        mMinimumWaitTimeMs: 3000
+        mMaximumWaitTimeMs: 5000
+        mEventFrequency: 100
+        mRandomizerSeed: 1
+        mEventCount: 3
+        mResetConfigurationBetweenEvents: 1
+        mLagSpikeConfiguration:
+          mActive: 0
+          mTimeRangeInMs: {x: 2000, y: 5000}
+        mPacketDelayConfiguration:
+          mActive: 0
+          mDelayRangeInMs: {x: 50, y: 150}
+        mPacketJitterConfiguration:
+          mActive: 0
+          mJitterRangeInMs: {x: 50, y: 100}
+        mPacketLossConfiguration:
+          mActive: 0
+          mPacketLossRangeInPercent: {x: 50, y: 100}
+        mPacketLossIntervalConfiguration:
+          mActive: 0
+          mMinimumInterval: {x: 1, y: 5}
+    - rid: 6616920706254372954
       type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime,
         asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
       data:

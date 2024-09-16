@@ -8,7 +8,7 @@ public class SpawnerControl : NetworkSingleton<SpawnerControl>
     private GameObject objectPrefab;
 
     [SerializeField]
-    private int maxObjectInstanceCount = 3;
+    private int maxObjectInstanceCount = 6;
 
     private void Awake()
     {
@@ -24,10 +24,10 @@ public class SpawnerControl : NetworkSingleton<SpawnerControl>
 
         for (int i = 0; i < maxObjectInstanceCount; i++)
         {
-            //GameObject go = Instantiate(objectPrefab, 
+            //GameObject go = Instantiate(objectPrefab,
             //    new Vector3(Random.Range(-10, 10), 10.0f, Random.Range(-10, 10)), Quaternion.identity);
             GameObject go = NetworkObjectPool.Instance.GetNetworkObject(objectPrefab).gameObject;
-            go.transform.position = new Vector3(Random.Range(-10, 10), 10.0f, Random.Range(-10, 10));
+            go.transform.position = new Vector3(Random.Range(-5, 5), 10.0f, Random.Range(-5, 5));
             go.GetComponent<NetworkObject>().Spawn();
         }
     }
