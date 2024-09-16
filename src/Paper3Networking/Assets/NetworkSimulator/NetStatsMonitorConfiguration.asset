@@ -15,10 +15,10 @@ MonoBehaviour:
   <DisplayElements>k__BackingField:
   - <FieldsInitialized>k__BackingField: 1
     <Type>k__BackingField: 2
-    <Label>k__BackingField: Example
+    <Label>k__BackingField: 
     <Stats>k__BackingField:
     - <TypeIndex>k__BackingField: 0
-      <EnumValue>k__BackingField: 55
+      <EnumValue>k__BackingField: 42
     <CounterConfiguration>k__BackingField:
       <SmoothingMethod>k__BackingField: 0
       <AggregationMethod>k__BackingField: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
     <SerializedStats>k__BackingField:
     - <TypeName>k__BackingField: Unity.Multiplayer.Tools.MetricTypes.DirectedMetricType,
         Unity.Multiplayer.Tools.MetricTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      <ValueName>k__BackingField: RttToServer
+      <ValueName>k__BackingField: SceneEventSent
   - <FieldsInitialized>k__BackingField: 1
     <Type>k__BackingField: 2
     <Label>k__BackingField: Example

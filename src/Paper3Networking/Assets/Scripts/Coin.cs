@@ -3,15 +3,27 @@ using UnityEngine;
 
 public class Coin : NetworkBehaviour
 {
-    private void OnCollisionEnter (Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerScore>(out PlayerScore playerScore))
         {
-            if (IsServer)
+            if (IsClient)
             {
-                playerScore.AddScoreServerRpc();
+                CollectCoinServerRpc(playerScore.OwnerClientId);
+            }
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void CollectCoinServerRpc(ulong clientId)
+    {
+        if (NetworkManager.Singleton.ConnectedClients.TryGetValue(clientId, out var client))
+        {
+            var playerScore = client.PlayerObject.GetComponent<PlayerScore>();
+            if (playerScore != null)
+            {
+                playerScore.AddScore();
                 Destroy(gameObject);
-                Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
             }
         }
     }

@@ -2053,50 +2053,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PresetAsset: {fileID: 0}
   m_PresetReference:
-    rid: 6616920724774060037
+    rid: 6616920726649438251
   m_Scenario:
-    rid: 6616920706254372879
-  m_IsScenarioSettingsFolded: 1
-  AutoRunScenario: 1
+    rid: -2
+  m_IsScenarioSettingsFolded: 0
+  AutoRunScenario: 0
   references:
     version: 2
     RefIds:
-    - rid: 6616920706254372879
-      type: {class: UnstableConnection, ns: Unity.Multiplayer.Tools.Samples.NetworkScenario,
-        asm: Assembly-CSharp}
-      data:
-        mMinimumWaitTimeMs: 3000
-        mMaximumWaitTimeMs: 5000
-        mEventFrequency: 100
-        mRandomizerSeed: 1
-        mEventCount: 3
-        mResetConfigurationBetweenEvents: 1
-        mLagSpikeConfiguration:
-          mActive: 0
-          mTimeRangeInMs: {x: 2000, y: 5000}
-        mPacketDelayConfiguration:
-          mActive: 0
-          mDelayRangeInMs: {x: 50, y: 150}
-        mPacketJitterConfiguration:
-          mActive: 0
-          mJitterRangeInMs: {x: 50, y: 100}
-        mPacketLossConfiguration:
-          mActive: 0
-          mPacketLossRangeInPercent: {x: 50, y: 100}
-        mPacketLossIntervalConfiguration:
-          mActive: 0
-          mMinimumInterval: {x: 1, y: 5}
-    - rid: 6616920724774060037
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 6616920726649438251
       type: {class: NetworkSimulatorPreset, ns: Unity.Multiplayer.Tools.NetworkSimulator.Runtime,
         asm: Unity.Multiplayer.Tools.NetworkSimulator.Runtime}
       data:
-        <Name>k__BackingField: Home Broadband [WIFI, Cable, Console, PC]
-        <Description>k__BackingField: Typical of desktop and console platforms (and
-          generally speaking most mobile players too).
-        <PacketDelayMs>k__BackingField: 32
-        <PacketJitterMs>k__BackingField: 12
+        <Name>k__BackingField: None
+        <Description>k__BackingField: 
+        <PacketDelayMs>k__BackingField: 0
+        <PacketJitterMs>k__BackingField: 0
         <PacketLossInterval>k__BackingField: 0
-        <PacketLossPercent>k__BackingField: 2
+        <PacketLossPercent>k__BackingField: 0
 --- !u!4 &920535162
 Transform:
   m_ObjectHideFlags: 0
@@ -2125,7 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Visible: 1
-  m_MaxRefreshRate: 30
+  m_MaxRefreshRate: 60
   <CustomStyleSheet>k__BackingField: {fileID: 0}
   <PanelSettingsOverride>k__BackingField: {fileID: 0}
   <Position>k__BackingField:
